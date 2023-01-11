@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-menu background-color="#545c64" :collapse="isCollapse" text-color="#fff" active-text-color="#409EFF" router
+        <el-menu background-color="#333744" :collapse="isCollapse" text-color="#fff" active-text-color="#409EFF" router
             :unique-opened="true" :default-active="$route.path" :collapse-transition="false">
             <el-submenu v-for=" (subItem, index) in hasChildren" :key="subItem.path" :index="subItem.path">
                 <template slot="title">
@@ -94,7 +94,6 @@ export default {
 .el-menu {
     border-right: none;
     height: 100vh;
-    background-color: #545C64;
 }
 
 .el-submenu {

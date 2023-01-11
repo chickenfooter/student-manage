@@ -13,6 +13,6 @@ service.interceptors.response.use((res) => {
     else
         return Promise.reject(new Error('failed'));
 }, (err) => {
-    return Promise.reject(err);
+    return Promise.reject(new Error(err));
 })
 export default service;

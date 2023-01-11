@@ -65,7 +65,7 @@ export default {
 .header {
     width: 100%;
     height: 60px;
-    background-color: #666;
+    background-color: #373D3F;
     line-height: 60px;
     font-size: 18px;
     color: #fff;

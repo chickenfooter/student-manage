@@ -35,8 +35,7 @@ export default {
     padding: 0;
 }
 
-/* .el-aside {
-    height: 100vh;
-    background-color: #545C64;
-} */
+.el-aside {
+    background-color: #333744;
+}
 </style>
