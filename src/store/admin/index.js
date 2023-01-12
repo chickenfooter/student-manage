@@ -1,4 +1,4 @@
-import { reqFindStuPage, reqGetStuLength, reqSearchStu, reqSearchStuById, reqFindTePage, reqGetTeLength, reqSearchTe, reqSearchTeById } from "@/api"
+import { reqFindStuPage, reqGetStuLength, reqSearchStu, reqSearchStuById, reqFindTePage, reqGetTeLength, reqSearchTe, reqSearchTeById, reqFindCoursePage, reqGetCourseLength, reqSearchCourse, reqSearchCourseById } from "@/api"
 const state = {
     stuList: [],        //学生列表
     stuLength: null,    //学生列表总页数
@@ -6,6 +6,9 @@ const state = {
     teList: [],        //教师列表
     teLength: null,    //教师列表总页数
     teInfo: {},        //教师信息
+    courseList: [],        //课程列表
+    courseLength: null,    //课程列表总页数
+    courseInfo: {},        //课程信息
 }
 const mutations = {
     FINDSTUBYPAGE(state, stuList) {
@@ -25,6 +28,16 @@ const mutations = {
     },
     SEARCHTEBYID(state, teInfo) {
         state.teInfo = teInfo;
+    },
+
+    FINDCOURSEBYPAGE(state, courseList) {
+        state.courseList = courseList;
+    },
+    GETCOURSELENGTH(state, courseLength) {
+        state.courseLength = courseLength;
+    },
+    SEARCHCOURSEBYID(state, courseInfo) {
+        state.courseInfo = courseInfo;
     }
 }
 const actions = {
@@ -59,9 +72,7 @@ const actions = {
         commit("GETTELENGTH", res);
     },
     async searchTe({ commit }, data) {
-        console.log("data:", data);
         let res = await reqSearchTe(data);
-        console.log("res:", res);
         commit("FINDTEBYPAGE", res);
         //更改数组长度，更改总页数
         commit("GETTELENGTH", res.length);
@@ -70,6 +81,29 @@ const actions = {
     async searchTeById({ commit }, id) {
         let res = await reqSearchTeById(id);
         commit("SEARCHTEBYID", res);
+    },
+
+    //通过页数搜索课程列表
+    async findCourseByPage({ commit }, { page, pageSize }) {
+        let res = await reqFindCoursePage(page, pageSize);
+        commit("FINDCOURSEBYPAGE", res);
+    },
+    async getCourselength({ commit }) {
+        let res = await reqGetCourseLength();
+        commit("GETCOURSELENGTH", res);
+    },
+    async searchCourse({ commit }, data) {
+        console.log("data:", data);
+        let res = await reqSearchCourse(data);
+        console.log("res:", res);
+        commit("FINDCOURSEBYPAGE", res);
+        //更改数组长度，更改总页数
+        commit("GETCOURSELENGTH", res.length);
+    },
+    //通过id查找课程
+    async searchCourseById({ commit }, id) {
+        let res = await reqSearchCourseById(id);
+        commit("SEARCHCOURSEBYID", res[0]);
     }
 }
 export default {

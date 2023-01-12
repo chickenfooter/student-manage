@@ -37,3 +37,18 @@ export const reqSearchTeById = (id) => request({ url: `/teacher/findById/${id}`,
 export const reqEditTe = (data) => request({ url: '/teacher/updateTeacher', method: 'post', data });
 //删除教师
 export const reqDeleteTe = (id) => request({ url: `/teacher/deleteById/${id}`, method: 'get' });
+
+//添加课程
+export const reqAddCourse = (data) => request({ url: '/course/save', method: 'post', data });
+//展示课程列表
+export const reqFindCoursePage = (page, pageSize) => request({ url: `/course/findByPage/${page}/${pageSize}`, method: "get" });
+//获取课程列表总数
+export const reqGetCourseLength = () => request({ url: '/course/getLength', method: 'get' });
+//查询课程
+export const reqSearchCourse = (data) => request({ url: '/course/findBySearch', method: 'post', data });
+//通过id查找课程
+export const reqSearchCourseById = (id) => request({ url: `/course/findById/${id}`, method: 'get' });
+//修改课程信息
+export const reqEditCourse = (data) => request({ url: '/course/updateCourse', method: 'post', data });
+//删除课程
+export const reqDeleteCourse = (id) => request({ url: `/course/deleteById/${id}`, method: 'get' });
