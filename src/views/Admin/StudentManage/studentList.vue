@@ -100,7 +100,7 @@ export default {
             }
             else {
                 this.page = 0;
-                this.$store.dispatch("searchStu", { sid: this.sid, sname: this.sname == '' ? null : this.sname });
+                this.$store.dispatch("searchStu", { sid: this.sid, sname: this.sname == '' ? null : this.sname, fuzzy: true });
             }
 
         },
@@ -118,13 +118,12 @@ export default {
                         await reqEditStu(this.stuInfo);
                         this.dialogFormVisible = false;
                         this.$message.success("修改成功!");
-                        //查询某位学生后进行修改仍保持查询状态
-                        if (this.sname) {
-                            this.sname = this.stuInfo.sname;
-                        }
                         this.stuInfo = {};
                         //修改成功后再重新获取学生列表数据
                         let page = this.page + 1;
+                        //清空查询信息，获取全部学生信息
+                        this.sid = "";
+                        this.sname = "";
                         this.search(page);
                     } catch (error) {
                         this.$message.error("修改失败!");

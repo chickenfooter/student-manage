@@ -21,3 +21,19 @@ export const reqSearchStuById = (id) => request({ url: `/student/findById/${id}`
 export const reqEditStu = (data) => request({ url: '/student/updateStudent', method: 'post', data });
 //删除学生
 export const reqDeleteStu = (id) => request({ url: `/student/deleteById/${id}`, method: 'get' });
+
+
+//添加教师
+export const reqAddTe = (data) => request({ url: '/teacher/addTeacher', method: 'post', data });
+//展示教师列表
+export const reqFindTePage = (page, pageSize) => request({ url: `/teacher/findByPage/${page}/${pageSize}`, method: "get" });
+//获取教师列表总数
+export const reqGetTeLength = () => request({ url: '/teacher/getLength', method: 'get' });
+//查询教师
+export const reqSearchTe = (data) => request({ url: '/teacher/findBySearch', method: 'post', data });
+//通过id查找教师
+export const reqSearchTeById = (id) => request({ url: `/teacher/findById/${id}`, method: 'get' });
+//修改教师信息
+export const reqEditTe = (data) => request({ url: '/teacher/updateTeacher', method: 'post', data });
+//删除教师
+export const reqDeleteTe = (id) => request({ url: `/teacher/deleteById/${id}`, method: 'get' });
